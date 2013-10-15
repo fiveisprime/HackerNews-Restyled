@@ -6,8 +6,8 @@
  * http://news.ycombinator.com/
  * http://news.ycombinator.com/news2
  * http://news.ycombinator.com/x?*
- */ 
- 
+ */
+
  /*=Header
 --------------------------------------------------------------------------------------- */
 .page-comments .header,
@@ -26,7 +26,7 @@
 	height: 50px;
 }
 .page-comments .header table > tbody > tr,
-.page-comments center > table > tbody > tr:nth-child(1) table > tbody > tr { 
+.page-comments center > table > tbody > tr:nth-child(1) table > tbody > tr {
 	background-color: transparent !important;
 }
 .page-comments center > table > tbody > tr:nth-child(1) table {
@@ -84,5 +84,3 @@
 .page-comments .comhead {
 	color: rgba(5,1,2,0.3) !important;
 }
-
-

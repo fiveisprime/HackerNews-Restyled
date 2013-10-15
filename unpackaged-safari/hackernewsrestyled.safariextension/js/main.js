@@ -8,7 +8,7 @@
 
 jQuery.noConflict();
 
-HackerNews = 
+HackerNews =
 {
   processRow: function(row)
   {
@@ -22,7 +22,7 @@ HackerNews =
     if (time && time.length)
     {
       time = time[0];
-      
+
       if (time.indexOf('minute') > -1)
       {
         time = parseInt(time.match(/\d+/g),10);
@@ -55,7 +55,7 @@ HackerNews =
     row.find('.points').css('width',Math.min(Math.round(points/400*100),100) + 'px');
     row.find('.comments').css('width',Math.min(Math.round(comments/200*100),100) + 'px');
     row.find('.time').css('width',Math.min(Math.round(time/1440*100),100) + 'px');
-    row.prepend('<a class="selector" href="' + row.find('.title').children('a').attr('href') + '"></a>');
+    row.prepend('<a class="selector" href="' + row.find('.title').children('a').attr('href') + '" target="_blank"></a>');
   },
   // capture core keyboard input
   keyCheck: function(e)
@@ -108,17 +108,17 @@ HackerNews =
   },
   openLink: function(item)
   {
-    window.open(item.children('.selector').attr('href')); 
+    window.open(item.children('.selector').attr('href'));
   },
   openCommentLink: function(item)
   {
     var commentslink = item.find('.comments').children('a');
     if (commentslink.length)
-      window.open(commentslink.attr('href')); 
+      window.open(commentslink.attr('href'));
   }
 };
 
-(function($) 
+(function($)
 {
   // set core classes
   var trs = $('table').children('tbody').children('tr');
@@ -131,16 +131,17 @@ HackerNews =
   content.addClass('content');
   footer.addClass('footer');
 
-  // Only handle the rest if we're not on comment pages
+  // Only handle the rest if we're not on comment pages or submit page.
   if (!/\/item/.test(document.location.href) &&
       !/\/newcomments$/.test(document.location.href) &&
       !/\/bestcomments$/.test(document.location.href) &&
       !/\/lists$/.test(document.location.href) &&
-      !/\/noobcomments$/.test(document.location.href))
+      !/\/noobcomments$/.test(document.location.href) &&
+      !/\/submit$/.test(document.location.href))
   {
     // set body class to 'page-comments' when on the appropriate page to set proper styling
     $('body').addClass('page-main');
-    
+
     // set up next link
     var nextlink = content.find('tr').last();
     nextlink.addClass('next-link');
@@ -174,7 +175,7 @@ HackerNews =
     }
 
     // add keychecking
-    $(window).keypress(function(e) 
+    $(window).keypress(function(e)
     {
       if (e.target.tagName != 'INPUT')
         HackerNews.keyCheck(e);
